@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="YearAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="249.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.YearVisualController">
+   <children>
+      <Pane fx:id="YearWindowPane" layoutX="6.0" layoutY="6.0" prefHeight="239.0" prefWidth="238.0" styleClass="roundedAnchorPane" stylesheets="@style.css">
+         <children>
+            <TableView fx:id="YearTableView" layoutX="14.0" layoutY="8.0" onMouseClicked="#selectYearTable" prefHeight="166.0" prefWidth="78.0">
+              <columns>
+                <TableColumn fx:id="yearTableColumn" prefWidth="76.0" text="Año" />
+              </columns>
+            </TableView>
+            <Label fx:id="yearLabel" layoutX="118.0" layoutY="8.0" text="Año:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="yearTextField" layoutX="169.0" layoutY="8.0" onKeyPressed="#validate" prefHeight="25.0" prefWidth="53.0">
+               <tooltip>
+                  <Tooltip text="Escriba el nuevo año" />
+               </tooltip></TextField>
+            <Button fx:id="insertYearButton" layoutX="118.0" layoutY="43.0" mnemonicParsing="false" onAction="#insertYearButtonAction" prefHeight="36.0" prefWidth="104.0" text="Insertar">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0">
+                     <image>
+                        <Image url="@../img/insertYear.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Inserte el nuevo año" />
+               </tooltip>
+            </Button>
+            <Button fx:id="updateYearButton" layoutX="118.0" layoutY="138.0" mnemonicParsing="false" onAction="#updateYearButtonAction" prefHeight="36.0" prefWidth="104.0" text="Modificar">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0">
+                     <image>
+                        <Image url="@../img/updateYear.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Modifique un año" />
+               </tooltip>
+            </Button>
+            <Button fx:id="deleteYearButton" layoutX="118.0" layoutY="91.0" mnemonicParsing="false" onAction="#deleteYearButtonAction" prefHeight="36.0" prefWidth="104.0" text="Eliminar">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0">
+                     <image>
+                        <Image url="@../img/deleteYear.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Elimine un año" />
+               </tooltip>
+            </Button>
+            <Button fx:id="backButton" layoutX="80.0" layoutY="193.0" mnemonicParsing="false" onAction="#backButtonAction" text="Atrás">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="29.0">
+                     <image>
+                        <Image url="@../img/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Ir a la ventana principal" />
+               </tooltip>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="1024.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.PrincipalVisualController">
+   <children>
+      <AnchorPane fx:id="anchorPage" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <MenuBar fx:id="menuBar1" prefHeight="25.0" prefWidth="1024.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Opciones">
+                  <items>
+                        <MenuItem fx:id="promoteYearMenuItem" mnemonicParsing="false" onAction="#promteYearMenuItemAction" text="Gestionar Año" />
+                    <MenuItem fx:id="CloseMenuItem" mnemonicParsing="false" onAction="#closeMenuItemAction" text="Cerrar" />
+                  </items>
+                </Menu>
+                  <Menu fx:id="reportMenu" mnemonicParsing="false" text="Reportes">
+                    <items>
+                      <MenuItem fx:id="blackListMenuItem" mnemonicParsing="false" onAction="#blackListMenuItemAction" text="Lista Negra" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <SplitPane dividerPositions="0.2759295499021526" layoutY="25.0" prefHeight="611.0" prefWidth="1024.0">
+              <items>
+                <AnchorPane fx:id="ClientAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="742.0" prefWidth="255.0">
+                     <children>
+                        <TableView fx:id="ClientTableView" layoutX="14.0" layoutY="39.0" onMouseClicked="#selectionTableClients" prefHeight="463.0" prefWidth="256.0">
+                          <columns>
+                            <TableColumn fx:id="nameTableColum" prefWidth="75.0" text="Nombre" />
+                            <TableColumn fx:id="lastaNamesTableColum" prefWidth="129.0" text="Apellidos" />
+                              <TableColumn fx:id="sexTableColum" prefWidth="51.0" text="Sexo" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="findClientTextField" layoutX="14.0" layoutY="6.0" onKeyPressed="#findClientOnAKeyPresed" prefHeight="25.0" prefWidth="199.0">
+                           <tooltip>
+                              <Tooltip text="Buscar un cliente por su nombre y apellidos" />
+                           </tooltip>
+                        </TextField>
+                        <Button fx:id="showAccountsButton" layoutX="54.0" layoutY="510.0" mnemonicParsing="false" onAction="#showAccountsButtonAction" prefHeight="41.0" prefWidth="181.0" text="Mostrar Cuentas">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="33.0">
+                                 <image>
+                                    <Image url="@../img/cuenta.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Mostrar todas las cuentas" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="promoteClientButton" layoutX="55.0" layoutY="562.0" mnemonicParsing="false" onAction="#promoteClientButtonAction" prefHeight="41.0" prefWidth="181.0" text="Gestionar Cliente">
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="33.0">
+                                 <image>
+                                    <Image url="@../img/cliente.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip text="Gestionar los clientes" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="tableRefreshButton" layoutX="220.0" layoutY="2.0" mnemonicParsing="false" onAction="#tableRefreshButtonAction" prefHeight="34.0" prefWidth="50.0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0">
+                                 <image>
+                                    <Image url="@../img/updateYear.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Refrescar tabla de clientes" />
+                           </tooltip>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane fx:id="clientAccountAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Separator layoutY="429.0" prefHeight="0.0" prefWidth="737.0" />
+                        <Pane fx:id="insertClientPane" layoutX="7.0" layoutY="439.0" prefHeight="157.0" prefWidth="723.0" styleClass="bottomRoundedAnchorPane" stylesheets="@style.css">
+                           <children>
+                              <Pane fx:id="clientFieldPane" layoutX="218.0" layoutY="13.0" prefHeight="133.0" prefWidth="311.0" styleClass="roundedAnchorPane" stylesheets="@style.css">
+                                 <children>
+                                    <Label fx:id="nameClientLabel" layoutX="14.0" layoutY="14.0" text="Nombre:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nameClientTextField" layoutX="95.0" layoutY="14.0" onKeyPressed="#validateName" prefHeight="25.0" prefWidth="209.0">
+                                       <tooltip>
+                                          <Tooltip text="Escriba el nombre del cliente" />
+                                       </tooltip>
+                                    </TextField>
+                                    <TextField fx:id="lastNamesClientTextField" layoutX="95.0" layoutY="52.0" onKeyPressed="#validateLastName" prefHeight="25.0" prefWidth="209.0">
+                                       <tooltip>
+                                          <Tooltip text="Escriba los apellidos del cliente" />
+                                       </tooltip>
+                                    </TextField>
+                                    <Label fx:id="lastNamesLabel" layoutX="14.0" layoutY="52.0" text="Apellidos:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="sexClientComboBox" layoutX="95.0" layoutY="90.0" prefHeight="25.0" prefWidth="135.0" promptText="Seleccione">
+                                       <tooltip>
+                                          <Tooltip text="Seleccione el sexo del cliente" />
+                                       </tooltip>
+                                    </ComboBox>
+                                    <Label fx:id="sexClientLabel" layoutX="14.0" layoutY="90.0" text="Sexo:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Button fx:id="updateClientButton" layoutX="569.0" layoutY="107.0" mnemonicParsing="false" onAction="#updateClientButtonAction" prefHeight="48.0" prefWidth="135.0" text="Modificar">
+                                 <graphic>
+                                    <ImageView fitHeight="36.0" fitWidth="39.0">
+                                       <image>
+                                          <Image url="@../img/updateCliente.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Modificar un cliente" />
+                                 </tooltip>
+                              </Button>
+                              <Button fx:id="insertClientButton" layoutX="569.0" layoutY="3.0" mnemonicParsing="false" onAction="#insertClientButtonAction" prefHeight="48.0" prefWidth="135.0" text="Registrar">
+                                 <graphic>
+                                    <ImageView fitHeight="36.0" fitWidth="39.0">
+                                       <image>
+                                          <Image url="@../img/addcliente.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Registrar un cliente" />
+                                 </tooltip>
+                              </Button>
+                              <Button fx:id="deleteClientButton" layoutX="569.0" layoutY="55.0" mnemonicParsing="false" onAction="#deleteClientButtonAction" prefHeight="48.0" prefWidth="135.0" text="Eliminar">
+                                 <graphic>
+                                    <ImageView fitHeight="36.0" fitWidth="39.0">
+                                       <image>
+                                          <Image url="@../img/deletecleinte.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Eliminar un cliente" />
+                                 </tooltip>
+                              </Button>
+                              <ImageView fx:id="idPicture" fitHeight="141.0" fitWidth="163.0" layoutX="28.0" layoutY="9.0">
+                                 <image>
+                                    <Image url="@../img/imagenes.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="addClientPictureButton" layoutX="158.0" layoutY="107.0" mnemonicParsing="false" onAction="#addClientPictureButtonAction" prefHeight="30.0" prefWidth="30.0" styleClass="roundedButton" stylesheets="@style.css">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="12.0" fitWidth="25.0">
+                                       <image>
+                                          <Image url="@../img/searchImage.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Añadir foto" />
+                                 </tooltip>
+                              </Button>
+                              <Button fx:id="deleteClientPictureButton1" layoutX="158.0" layoutY="21.0" mnemonicParsing="false" onAction="#deleteClientPictureButtonAction" prefHeight="30.0" prefWidth="30.0" styleClass="roundedButton" stylesheets="@style.css">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Eliminar foto" />
+                                 </tooltip>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="21.0">
+                                       <image>
+                                          <Image url="@../img/deleteYear.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="clientAccountPane" layoutX="7.0" layoutY="6.0" prefHeight="416.0" prefWidth="723.0" styleClass="bottomRoundedAnchorPane" stylesheets="@style.css">
+                           <children>
+                              <TableView fx:id="ClientAccountTableView" layoutX="8.0" layoutY="8.0" onMouseClicked="#selectTableAccountent" prefHeight="400.0" prefWidth="339.0">
+                                <columns>
+                                  <TableColumn fx:id="yearTableColumn" prefWidth="75.0" text="Año" />
+                                  <TableColumn fx:id="monthTableColumn" prefWidth="135.0" text="Mes" />
+                                    <TableColumn fx:id="asistanceTableColumn" prefWidth="68.0" text="Asistencia" />
+                                    <TableColumn fx:id="paymentTableColumn" prefWidth="59.0" text="Pago" />
+                                </columns>
+                              </TableView>
+                              <Button fx:id="insertButton" layoutX="565.0" layoutY="18.0" mnemonicParsing="false" onAction="#insertAccountButtonAction" prefHeight="54.0" prefWidth="141.0" text="Agregar">
+                                 <graphic>
+                                    <ImageView fitHeight="42.0" fitWidth="48.0">
+                                       <image>
+                                          <Image url="@../img/addaccounte.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Agragar una cuenta" />
+                                 </tooltip>
+                              </Button>
+                              <Button fx:id="updateButton" layoutX="565.0" layoutY="143.0" mnemonicParsing="false" onAction="#updateAccountButtonAction" text="Modificar">
+                                 <graphic>
+                                    <ImageView fitHeight="42.0" fitWidth="48.0">
+                                       <image>
+                                          <Image url="@../img/updateaccounten.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Modificar la cuenta" />
+                                 </tooltip>
+                              </Button>
+                              <Button fx:id="deleteButton" layoutX="565.0" layoutY="80.0" mnemonicParsing="false" onAction="#deleteAccountButtonAction" prefHeight="54.0" prefWidth="141.0" text="Eliminar">
+                                 <graphic>
+                                    <ImageView fitHeight="42.0" fitWidth="48.0">
+                                       <image>
+                                          <Image url="@../img/deleteaccounten.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Eliminar la cuenta" />
+                                 </tooltip>
+                              </Button>
+                              <Pane layoutX="356.0" layoutY="9.0" prefHeight="202.0" prefWidth="192.0" styleClass="roundedAnchorPane" stylesheets="@style.css">
+                                 <children>
+                                    <Label fx:id="yearLabel" layoutX="10.0" layoutY="10.0" text="Año:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="yearComboBox" layoutX="56.0" layoutY="10.0" onAction="#yearComboBoxAction" prefHeight="25.0" prefWidth="121.0" promptText="Seleccione">
+                                       <tooltip>
+                                          <Tooltip text="Seleccione un año" />
+                                       </tooltip>
+                                    </ComboBox>
+                                    <Label fx:id="monthLabel" layoutX="10.0" layoutY="62.0" text="Mes:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="monthComboBox" layoutX="56.0" layoutY="62.0" onAction="#monthComboBoxAction" prefHeight="25.0" prefWidth="121.0" promptText="Seleccione">
+                                       <tooltip>
+                                          <Tooltip text="Seleccione el mes" />
+                                       </tooltip>
+                                    </ComboBox>
+                                    <CheckBox fx:id="asistanceCheckBox" layoutX="156.0" layoutY="111.0" mnemonicParsing="false">
+                                       <tooltip>
+                                          <Tooltip text="Registre la sistencia del cliente" />
+                                       </tooltip>
+                                    </CheckBox>
+                                    <CheckBox fx:id="paymentCheckBox" layoutX="156.0" layoutY="163.0" mnemonicParsing="false" onAction="#paymentCheckBoxAction">
+                                       <tooltip>
+                                          <Tooltip text="Indique si el cliente pagó" />
+                                       </tooltip>
+                                    </CheckBox>
+                                    <Label layoutX="10.0" layoutY="107.0" text="Asistencia:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="11.0" layoutY="159.0" text="Pago:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="430.0" layoutY="210.0" prefHeight="60.0" prefWidth="73.0">
+         <children>
+            <HBox fx:id="hbprogress" prefHeight="71.0" prefWidth="73.0">
+               <children>
+                  <ProgressIndicator fx:id="progress" prefHeight="93.0" prefWidth="100.0" progress="0.0" visible="false" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

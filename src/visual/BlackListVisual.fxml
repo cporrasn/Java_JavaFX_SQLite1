@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="blackListAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.BlacListVisualContoller">
+   <children>
+      <Pane fx:id="blackListPane" layoutX="4.0" layoutY="5.0" prefHeight="376.0" prefWidth="336.0" styleClass="roundedAnchorPane" stylesheets="@style.css">
+         <children>
+            <Label fx:id="yearLabel" layoutX="8.0" layoutY="17.0" text="Año:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="yearComboBox" layoutX="53.0" layoutY="17.0" onAction="#yearComboBoxAction" prefHeight="25.0" prefWidth="125.0" promptText="Seleccione">
+               <tooltip>
+                  <Tooltip text="Seleecione un año" />
+               </tooltip></ComboBox>
+            <ComboBox fx:id="monthComboBox" layoutX="53.0" layoutY="53.0" onAction="#monthComboBoxAction" prefHeight="25.0" prefWidth="125.0" promptText="Seleccione">
+               <tooltip>
+                  <Tooltip text="Seleccione un mes" />
+               </tooltip></ComboBox>
+            <TableView fx:id="debtClientsTableView" layoutX="8.0" layoutY="89.0" prefHeight="213.0" prefWidth="321.0">
+              <columns>
+                <TableColumn fx:id="nameClientTableColum" prefWidth="100.0" text="Nombre" />
+                <TableColumn fx:id="lastNamesClientTableColumn" prefWidth="154.0" text="Apellidos" />
+                  <TableColumn fx:id="sexClientTableColumn" prefWidth="88.0" text="Sexo" />
+              </columns>
+            </TableView>
+            <Label fx:id="monthLabel" layoutX="8.0" layoutY="53.0" text="Mes:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="seeDebtClientsButton" layoutX="220.0" layoutY="17.0" mnemonicParsing="false" onAction="#seeDebtClientsButtonAction" prefHeight="61.0" prefWidth="91.0" text="Ver">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="33.0">
+                     <image>
+                        <Image url="@../img/siker.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Buscar clientes que no han pagado" />
+               </tooltip>
+            </Button>
+            <Button fx:id="pdfExportButton" layoutX="8.0" layoutY="308.0" mnemonicParsing="false" onAction="#pdfExportButtonAction" prefHeight="61.0" prefWidth="165.0" text="Exportar a PDF">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0">
+                     <image>
+                        <Image url="@../img/pdfExport.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Exportar la lista de cleintes a un fichero PDF" />
+               </tooltip>
+            </Button>
+            <Button fx:id="backButton" layoutX="238.0" layoutY="308.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="61.0" prefWidth="91.0" text="Atrás">
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="43.0">
+                     <image>
+                        <Image url="@../img/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Ir a la ventana principal" />
+               </tooltip>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
